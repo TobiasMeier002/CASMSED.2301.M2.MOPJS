@@ -49,8 +49,7 @@ export default {
       axios.get('https://api.open-meteo.com/v1/forecast?latitude=' + this.placeLatitude + '&longitude=' + this.placeLongitude +'&hourly=temperature_2m')
         .then((response) => {
           this.temperatureResponse = response.data
-          this.temperature = this.temperatureResponse.hourly.temperature_2m[this.temperatureResponse.hourly.time.indexOf(date+'T'+time)]
-          console.log(date, time, this.temperature)
+          this.temperature = this.temperatureResponse.hourly.temperature_2m[this.temperatureResponse.hourly.time.indexOf(date + 'T' + time.split(":")[0] + ':00')]
         })
         .catch((error) => {
           console.log(error)

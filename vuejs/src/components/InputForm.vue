@@ -9,7 +9,7 @@
         </div>
         <div>
             <label>Date</label>
-            <input type="date" required v-model="date" @keyup="emitDate">
+            <input type="date" required v-model="date" @keyup="emitDate" :min="minDate" :max="maxDate">
         </div>
         <div>
             <label>Time</label>
@@ -25,7 +25,8 @@ export default {
             placeLongitude: null,
             placeLatitude: null,
             date: null,
-            time: null
+            time: null,
+            minDate: new Date().toISOString().split("T")[0]
         }
     },
     methods: {
@@ -41,8 +42,14 @@ export default {
         emitTime() {
             this.emitter.emit('emitTime', { msg: this.time})
         }
+    },
+    computed: {
+        maxDate() {
+            let myDate = new Date()
+            myDate.setDate(myDate.getDate() + 6)
+            return myDate.toISOString().split("T")[0]
+        }
     }
-
 }
 </script>
 
