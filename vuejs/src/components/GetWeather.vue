@@ -3,11 +3,18 @@
     <p v-else> Latitude is currently not set </p>
     <p v-if="placeLongitude">Longitude is currently set to: {{ placeLongitude }}</p>
     <p v-else> Longitude is currently not set </p>
-    <div v-show="showGetTemperature">
-        <button class="pill" @click="getTemperature">Get Temperature</button>
+    <p v-if="date">Date is currently set to: {{ date }}</p>
+    <p v-else> Date is currently not set </p>
+    <p v-if="time">Time is currently set to: {{ time }}</p>
+    <p v-else> Time is currently not set </p>
+    <div v-show="showGetCurrentTemperature">
+        <button class="pill" @click="getCurrentTemperature">Get Current Temperature</button>
     </div>
-
-    <h3 v-if="this.currentTemperature"> The Temperature is {{ this.currentTemperature }} °C</h3>
+    <h3 v-if="this.currentTemperature"> The Current Temperature is {{ this.currentTemperature }} °C</h3>
+    <div v-show="showGetTemperature">
+        <button class="pill" @click="getTemperature(this.date, this.time)">Get Temperature for Selected Date</button>
+    </div>
+    <h3 v-if="this.temperature"> The Temperature for the selected date-time is {{ this.temperature }} °C</h3>
 </template>
 
 <script>
@@ -18,16 +25,32 @@ export default {
     return {
       temperatureResponse: [],
       currentTemperature: null,
+      temperature: null,
       placeLongitude: null,
       placeLatitude: null,
+      date: null,
+      time: null,
+      timeIndex: null,
+      temperatureIndex: null
     }
   },
   methods: {
-    getTemperature() {
+    getCurrentTemperature() {
       axios.get('https://api.open-meteo.com/v1/forecast?latitude=' + this.placeLatitude + '&longitude=' + this.placeLongitude +'&current=temperature_2m')
         .then((response) => {
           this.temperatureResponse = response.data
           this.currentTemperature = this.temperatureResponse.current.temperature_2m
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    getTemperature(date, time) {
+      axios.get('https://api.open-meteo.com/v1/forecast?latitude=' + this.placeLatitude + '&longitude=' + this.placeLongitude +'&hourly=temperature_2m')
+        .then((response) => {
+          this.temperatureResponse = response.data
+          this.temperature = this.temperatureResponse.hourly.temperature_2m[this.temperatureResponse.hourly.time.indexOf(date+'T'+time)]
+          console.log(date, time, this.temperature)
         })
         .catch((error) => {
           console.log(error)
@@ -40,11 +63,24 @@ export default {
     }),
     this.emitter.on("emitLongitude", (data) => {
         this.placeLongitude = data.msg
+    }),
+    this.emitter.on("emitDate", (data) => {
+        this.date = data.msg
+    }),
+    this.emitter.on("emitTime", (data) => {
+        this.time = data.msg
     })
   },
   computed: {
-    showGetTemperature: function() {
+    showGetCurrentTemperature: function() {
         if (this.placeLatitude && this.placeLongitude) {
+            return true
+        } else {
+            return false
+        }
+    },
+    showGetTemperature: function() {
+        if (this.placeLatitude && this.placeLongitude && this.date && this.time) {
             return true
         } else {
             return false

@@ -7,6 +7,14 @@
             <label>Longitude</label>
             <input type="double" required v-model="placeLongitude" placeholder="insert latitude and press enter" @keyup.enter="emitLongitude">
         </div>
+        <div>
+            <label>Date</label>
+            <input type="date" required v-model="date" @keyup="emitDate">
+        </div>
+        <div>
+            <label>Time</label>
+            <input type="time" required v-model="time" @keyup="emitTime">
+        </div>
 
 </template>
 
@@ -16,6 +24,8 @@ export default {
         return {
             placeLongitude: null,
             placeLatitude: null,
+            date: null,
+            time: null
         }
     },
     methods: {
@@ -24,6 +34,12 @@ export default {
         },
         emitLongitude() {
             this.emitter.emit('emitLongitude', { msg: this.placeLongitude})
+        },
+        emitDate() {
+            this.emitter.emit('emitDate', { msg: this.date})
+        },
+        emitTime() {
+            this.emitter.emit('emitTime', { msg: this.time})
         }
     }
 
