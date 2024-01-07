@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PubSubChannel Chat Example</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+  <div class="window">
+    <h1>Welcome to MOPJ</h1>
+    <div>
+        <label>Latitude</label>
+        <input type="double" required id="placeLatitude" placeholder="insert latitude">
+    </div>
+    <div>
+        <label>Longitude</label>
+        <input type="double" required id="placeLongitude" placeholder="insert longitude">
+    </div>
+    <div>
+        <label>Date</label>
+        <input type="date" required id="date">
+    </div>
+    <div>
+        <label>Time</label>
+        <input type="time" required id="time">
+    </div>
+        <button class="pill" id="pushMessage">Push Data</button>
+    
+    <div class="container">
+        <label>API question</label>
+        <chat-box id="chat-box-latitude" name="lat"></chat-box>
+    </div>
+    </div>
+    </body>
+
+    <script src="./js/ChatBox.js"></script>
+    <script src="./js/PubSubChannel.js"></script>
+
+    <script type="text/javascript">
+        var boxLatitude = document.getElementById("chat-box-latitude")
+        var btn = document.getElementById("pushMessage")
+        
+        var channel = new PubSubChannel()
+        channel.subscribe(boxLatitude)
+
+        btn.addEventListener('click', async event =>
+        {   
+            let inputLatitude = document.getElementById("placeLatitude").value;
+            let inputLongitude = document.getElementById("placeLongitude").value;
+            let inputDate = document.getElementById("date").value;
+            let inputTime = document.getElementById("time").value;
+
+            var message = {longitude : inputLongitude, latitude : inputLatitude, date: inputDate, time: inputTime} // Use a Class-Type instead
+            await channel.send(message)
+        });
+        
+    </script>
+</html>
