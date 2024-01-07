@@ -13,7 +13,7 @@ class ChatBox extends HTMLDivElement
         let textElement = document.createElement("p");
         textElement.innerText = messageText
         this.shadowRoot.append(textElement)
-        console.log("ChatBox message added", messageText)
+        console.log("ChatBox message added")
     }
 
     handleTextMessage(messageText)
@@ -42,6 +42,9 @@ class ChatBox extends HTMLDivElement
         }
         else if(messageObject.latitude && messageObject.longitude) {
             this.addMessage('https://api.open-meteo.com/v1/forecast?latitude=' + messageObject.latitude + '&longitude=' + messageObject.longitude +'&current=temperature_2m')
+        } 
+        else if(messageObject.text) {
+            console.log(messageObject.text)
         }
     }
 }
