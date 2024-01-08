@@ -3,7 +3,7 @@ import {customElement, property} from 'lit/decorators.js';
 
 @customElement('simple-greeting')
 export class SimpleGreeting extends LitElement {
-  static styles = css`p { color: red }`;
+  static styles = css`p { color: lightblue }`;
 
   @property()
   name = 'Somebody';

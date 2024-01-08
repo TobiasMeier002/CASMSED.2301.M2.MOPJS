@@ -6,20 +6,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-let SimpleGreeting = class SimpleGreeting extends LitElement {
+let SelectDate = class SelectDate extends LitElement {
     constructor() {
         super(...arguments);
-        this.name = 'Somebody';
+        this.date = new Date();
     }
     render() {
-        return html `<p>Hello, ${this.name}!</p>`;
+        return html `<p><input type="date" @change=${this._dateChanged} value="${this.date.toLocaleDateString()}"></p>`;
+    }
+    _dateChanged(e) {
+        const utcDate = e.target.valueAsDate;
+        if (utcDate) {
+            this.date = this._localDateFromUTC(utcDate);
+        }
+    }
+    _localDateFromUTC(utcDate) {
+        return new Date(utcDate.getUTCFullYear(), utcDate.getUTCMonth(), utcDate.getUTCDate());
     }
 };
-SimpleGreeting.styles = css `p { color: lightblue }`;
+SelectDate.styles = css `p {color: black}`;
 __decorate([
     property()
-], SimpleGreeting.prototype, "name", void 0);
-SimpleGreeting = __decorate([
-    customElement('simple-greeting')
-], SimpleGreeting);
-export { SimpleGreeting };
+], SelectDate.prototype, "date", void 0);
+SelectDate = __decorate([
+    customElement('select-date')
+], SelectDate);
+export { SelectDate };
