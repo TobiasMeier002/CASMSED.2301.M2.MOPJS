@@ -1,5 +1,5 @@
 class coordinates extends HTMLElement {
-    constructor(channel) 
+    constructor() 
     {
         super();
 
@@ -34,7 +34,7 @@ class coordinates extends HTMLElement {
         input.appendChild(labelLat);
         let latitude = document.createElement("input");
         latitude.setAttribute('type', 'double');
-        latitude.setAttribute('id', 'placeLatitude');
+        latitude.setAttribute('id', 'Latitude');
         latitude.setAttribute('placeholder', 'Insert Latitude');
         latitude.addEventListener("input", this.handleInput);
         input.appendChild(latitude);
@@ -44,7 +44,7 @@ class coordinates extends HTMLElement {
         input.appendChild(labelLon);
         let longitude = document.createElement("input");
         longitude.setAttribute('type', 'double');
-        longitude.setAttribute('id', 'placeLongitude');
+        longitude.setAttribute('id', 'Longitude');
         longitude.setAttribute('placeholder', 'Insert Longitude');
         longitude.addEventListener("input", this.handleInput);
         input.appendChild(longitude);
@@ -54,10 +54,10 @@ class coordinates extends HTMLElement {
     }
 
     async handleInput (e) {
-        //if (e.target.value == /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/) {
+        if (e.target.value.match(/-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})/)) {
             var message = {name : e.target.id, value : e.target.value}
             await channel.send(message)
-        //}
+        }
     }
 }
 

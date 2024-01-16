@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MOPJ - Native javascript</title>
     <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
-  <div class="window">
-    <h1>Welcome to MOPJ</h1>
-    <coordinates-input></coordinates-input>
-    <div>
-        <label>Date</label>
-        <input type="date" required id="date">
+</head>
+
+<body>
+    <div class="window">
+        <h1>Welcome to MOPJ</h1>
+        <coordinates-input></coordinates-input>
+        <div>
+            <label>Date</label>
+            <input type="date" required id="date">
+        </div>
+        <div>
+            <label>Time</label>
+            <input type="time" required id="time">
+        </div>
+        <div class="container">
+            <h2>Weather</h2>
+            <temp-display id="temparature"></temp-display>
+        </div>
     </div>
-    <div>
-        <label>Time</label>
-        <input type="time" required id="time">
-    </div>
-    <button class="pill" id="pushMessage">Push Data</button>
-    
-    <div class="container">
-        <label>API question</label>
-        <chat-box id="chat-box-latitude" name="lat"></chat-box>
-        
-    </div>
-    <chat-box></chat-box>
-    <button class="pill" id="getTemperature">Get Temperature</button>
-    </div>
- 
-    </body>
+
+</body>
 
 
-    <script src="./js/PubSubChannel.js"></script>
-    <script src="./js/ChatBox.js"></script>
-    <script src="./js/components/coordinates.js"></script>   
-    <script type="text/javascript">
-        var boxLatitude = document.getElementById("chat-box-latitude")
-        
-        var channel = new PubSubChannel()
-        channel.subscribe(boxLatitude)
-        
-    </script>
+<script src="./js/PubSubChannel.js"></script>
+<script src="./js/components/coordinates.js"></script>
+<script src="./js/components/temperature.js"></script>
+<script type="text/javascript">
+    var boxTemp = document.getElementById("temparature")
+    var channel = new PubSubChannel()
+    channel.subscribe(boxTemp)
+</script>
+
 </html>
