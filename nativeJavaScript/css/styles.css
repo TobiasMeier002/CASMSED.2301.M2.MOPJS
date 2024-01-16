@@ -37,7 +37,7 @@ h3 {
     color: white;
     cursor: pointer;
 }
-label {
+label, coordinates-input::part(label) {
     color: #555;
     display: inline-block;
     margin: 25px 0 15px;
@@ -46,7 +46,7 @@ label {
     letter-spacing: 1px;
     font-weight: bold;
 }
-input {
+input, coordinates-input::part(input) {
     display: block;
     padding: 10px 6px;
     width: 100%;

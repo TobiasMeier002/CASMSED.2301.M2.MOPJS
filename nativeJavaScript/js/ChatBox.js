@@ -1,4 +1,4 @@
-class ChatBox extends HTMLDivElement 
+class ChatBox extends HTMLElement 
 {
     constructor() 
     {
@@ -15,39 +15,14 @@ class ChatBox extends HTMLDivElement
         this.shadowRoot.append(textElement)
         console.log("ChatBox message added")
     }
-
-    handleTextMessage(messageText)
-    {
-        console.log("ChatBox text message handled", messageText)
-        this.addMessage(messageText)
-    }
-
-    handleMessageOld(messageObject)
-    {
-        if(messageObject.target === this.getAttribute("name"))
-        {
-            console.log("ChatBox text message handled", messageObject)
-            this.addMessage(messageObject.message)
-        }
-        else 
-        {
-            console.log("ChatBox text message could NOT be handled", messageObject)
-        }
-    }
-
     handleMessage(messageObject)
     {
-        if(messageObject.latitude && messageObject.longitude && messageObject.date && messageObject.time) {
-            this.addMessage('https://api.open-meteo.com/v1/forecast?latitude=' + messageObject.latitude + '&longitude=' + messageObject.longitude +'&hourly=temperature_2m')
-        }
-        else if(messageObject.latitude && messageObject.longitude) {
-            this.addMessage('https://api.open-meteo.com/v1/forecast?latitude=' + messageObject.latitude + '&longitude=' + messageObject.longitude +'&current=temperature_2m')
-        } 
-        else if(messageObject.text) {
-            console.log(messageObject.text)
-        }
+        console.log("ChatBox text message handled", messageObject)
+        this.addMessage(messageObject.name + messageObject.value)
     }
+
+ 
 }
 
 // Define the new element
-customElements.define('chat-box', ChatBox, { extends: 'div' });
+customElements.define('chat-box', ChatBox);
