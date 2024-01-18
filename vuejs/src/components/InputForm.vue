@@ -1,11 +1,11 @@
 <template>
         <div>
             <label>Latitude</label>
-            <input type="double" required v-model="placeLatitude" placeholder="insert latitude and press enter" @keyup.enter="emitLatitude">
+            <input type="double" required v-model="placeLatitude" placeholder="insert latitude" @keyup="emitLatitude">
         </div>
         <div>
             <label>Longitude</label>
-            <input type="double" required v-model="placeLongitude" placeholder="insert latitude and press enter" @keyup.enter="emitLongitude">
+            <input type="double" required v-model="placeLongitude" placeholder="insert longitude" @keyup="emitLongitude">
         </div>
         <div>
             <label>Date</label>
