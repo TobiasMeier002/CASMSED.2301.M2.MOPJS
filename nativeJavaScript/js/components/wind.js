@@ -42,6 +42,7 @@ class wind extends HTMLElement {
 
     longitude;
     latitude;
+    myDate;
 
     handleMessage(messageObject)
     {
@@ -52,7 +53,23 @@ class wind extends HTMLElement {
         if (messageObject.name == 'Latitude') {
             this.latitude = messageObject.value;
         }
-        if (this.latitude && this.longitude) {
+        if (messageObject.name == 'Date') {
+            this.myDate = messageObject.value;
+        }
+        if (this.latitude && this.longitude && this.myDate) {
+            fetch('https://api.open-meteo.com/v1/forecast?latitude=' + this.latitude + '&longitude=' + this.longitude +'&hourly=wind_speed_10m').then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                response.json().then( r => this.shadowRoot.getElementById('wind').value = r.hourly.wind_speed_10m[r.hourly.time.indexOf(this.myDate + 'T12:00')] + ' km/h')
+              })
+              .then(data => {
+                console.log(data);
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+        } else if (this.latitude && this.longitude) {
             fetch('https://api.open-meteo.com/v1/forecast?latitude=' + this.latitude + '&longitude=' + this.longitude +'&current=wind_speed_10m').then(response => {
                 if (!response.ok) {
                   throw new Error('Network response was not ok');

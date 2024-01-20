@@ -30,7 +30,7 @@ class temperature extends HTMLElement {
         this.shadowRoot.append(style);
         let temp = document.createElement("div");
         let label = document.createElement("label")
-        label.innerText = "Temperatur"
+        label.innerText = "Temperature"
         temp.append(label)
         let input = document.createElement("input")
         input.setAttribute("readonly",true) 
@@ -42,6 +42,7 @@ class temperature extends HTMLElement {
 
     longitude;
     latitude;
+    myDate;
 
     handleMessage(messageObject)
     {
@@ -52,7 +53,23 @@ class temperature extends HTMLElement {
         if (messageObject.name == 'Latitude') {
             this.latitude = messageObject.value;
         }
-        if (this.latitude && this.longitude) {
+        if (messageObject.name == 'Date') {
+            this.myDate = messageObject.value;
+        }
+        if (this.latitude && this.longitude && this.myDate) {
+            fetch('https://api.open-meteo.com/v1/forecast?latitude=' + this.latitude + '&longitude=' + this.longitude +'&hourly=temperature_2m').then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                response.json().then( r => this.shadowRoot.getElementById('temp').value = r.hourly.temperature_2m[r.hourly.time.indexOf(this.myDate + 'T12:00')] + ' °C')
+              })
+              .then(data => {
+                console.log(data);
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+        } else if (this.latitude && this.longitude) {
             fetch('https://api.open-meteo.com/v1/forecast?latitude=' + this.latitude + '&longitude=' + this.longitude +'&current=temperature_2m').then(response => {
                 if (!response.ok) {
                   throw new Error('Network response was not ok');
