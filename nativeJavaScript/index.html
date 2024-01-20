@@ -24,6 +24,8 @@
         <div class="container">
             <h2>Weather</h2>
             <temp-display id="temparature"></temp-display>
+            <rain-display id="rain"></rain-display>
+            <wind-display id="wind"></wind-display>
         </div>
     </div>
 
@@ -33,10 +35,16 @@
 <script src="./js/PubSubChannel.js"></script>
 <script src="./js/components/coordinates.js"></script>
 <script src="./js/components/temperature.js"></script>
+<script src="./js/components/rain.js"></script>
+<script src="./js/components/wind.js"></script>
 <script type="text/javascript">
     var boxTemp = document.getElementById("temparature")
+    var boxRain = document.getElementById("rain")
+    var boxWind = document.getElementById("wind")
     var channel = new PubSubChannel()
     channel.subscribe(boxTemp)
+    channel.subscribe(boxRain)
+    channel.subscribe(boxWind)
 </script>
 
 </html>
