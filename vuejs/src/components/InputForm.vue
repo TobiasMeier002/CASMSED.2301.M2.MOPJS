@@ -1,21 +1,16 @@
 <template>
-        <div>
-            <label>Latitude</label>
-            <input type="double" required v-model="placeLatitude" placeholder="insert latitude" @keyup="emitLatitude">
-        </div>
-        <div>
-            <label>Longitude</label>
-            <input type="double" required v-model="placeLongitude" placeholder="insert longitude" @keyup="emitLongitude">
-        </div>
-        <div>
-            <label>Date</label>
-            <input type="date" required v-model="date" @keyup="emitDate" :min="minDate" :max="maxDate">
-        </div>
-        <div>
-            <label>Time</label>
-            <input type="time" required v-model="time" @keyup="emitTime">
-        </div>
-
+    <div>
+        <label>Latitude</label>
+        <input type="double" required v-model="placeLatitude" placeholder="insert latitude" @keyup="emitLatitude">
+    </div>
+    <div>
+        <label>Longitude</label>
+        <input type="double" required v-model="placeLongitude" placeholder="insert longitude" @keyup="emitLongitude">
+    </div>
+    <div>
+        <label>Date</label>
+        <input type="date" required v-model="date" @keyup="emitDate" @click="emitDate" :min="minDate" :max="maxDate">
+    </div>
 </template>
 
 <script>
@@ -38,9 +33,6 @@ export default {
         },
         emitDate() {
             this.emitter.emit('emitDate', { msg: this.date})
-        },
-        emitTime() {
-            this.emitter.emit('emitTime', { msg: this.time})
         }
     },
     computed: {
