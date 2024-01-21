@@ -29,6 +29,6 @@ Die Native Javascript Seite benutzt das Publish Subscribe Pattern um die Kompone
 lit ist eine leichtgewichtige Bibliothek für einfaches Komponenten Design.
 Die lit Lösung verwendet das Mediator Pattern, die Komponente `<Weather-APP>` fungiert als Mediator und verarbeitet die Events der Eingabe Komponenten und sendet diese an die Anzeige Komponenten.
 
-1. Change working directory to /li/
+1. Change working directory to /lit/
 2. Install npm modules `npm i`
 3. Start Application `npm start`
