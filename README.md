@@ -22,6 +22,8 @@ Bei grösseren Anwendungen besteht jedoch das Risiko, dass der Code unübersicht
 
 ### Beschreibung
 
+Vue ist ein JavaScript-Framework zur Erstellung von Benutzeroberflächen. Es baut auf Standard-HTML, -CSS und -JavaScript auf und bietet ein deklaratives und komponentenbasiertes Programmiermodell, das Ihnen hilft, einfache oder komplexe Benutzeroberflächen effizient zu entwickeln.
+
 ### Installation
 
 1. Change working directory to /vuejs/
@@ -30,8 +32,8 @@ Bei grösseren Anwendungen besteht jedoch das Risiko, dass der Code unübersicht
 
 ### Fazit
 
-VueJS ist eine Progresive JavaScript Framework (https://vuejs.org) Die Lernkurve ist relativ flach (auch wenn man wenig JavaScript kann).
-.vue Files erlauben den Code Kompakter zu schreiben da man die Methoden, Style und HTML Template direkt in einen File schreiben kann. Das macht der Code übersichtlicher und leichter zu warten als in Native JavaScript.
+VueJS ist ein Progresives JavaScript Framework (https://vuejs.org) Die Lernkurve ist relativ flach (auch wenn man wenig JavaScript kann).
+.vue Files erlauben es den Code kompakter zu schreiben, da man die Methoden, Style und HTML Template direkt in ein File schreiben kann. Das macht der Code übersichtlicher und leichter zu warten als in Native JavaScript.
 Mit der axios Library von VueJS kann man sehr einfach API Requests machen und mit "mitt" kann man Events zwischen Komponenten senden.
 
 ## lit
@@ -49,7 +51,7 @@ Die Lit Lösung verwendet das Mediator Pattern, die Komponente `<Weather-APP>` f
 ### Fazit
 
 Lit ist eine leichtgewichtige Bibliothek für einfaches Komponenten Design. (https://lit.dev)
-Lit bietet eine flache Lernkurve und ist auf Komponenten spezielisiert.
+Lit bietet eine flache Lernkurve und ist auf Komponenten spezialisiert.
 In Lit wird für die Kommunikation zwischen verschiedenen Komponenten das Mediator Pattern angewendet. 
 Als Mediator fungiert eine Komponente, welche alle Elemente mit Datenkommunikation beinhaltet, definiert. Daten können in Custom Events an den Mediator gesendet werden. Der CustomEventHandler kann diese Daten in die öffentlichen Properties der Sub Komponenten schreiben. Mit dem `@query` Statement können auch mehrere Komponenten Selektier tund Adressiert werden.
 
