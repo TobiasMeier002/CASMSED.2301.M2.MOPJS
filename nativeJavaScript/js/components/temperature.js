@@ -46,7 +46,7 @@ class temperature extends HTMLElement {
 
     handleMessage(messageObject)
     {
-        console.log("ChatBox text message handled", messageObject)
+        console.log("Temperatur message handled", messageObject)
         if (messageObject.name == 'Longitude') {
             this.longitude = messageObject.value;
         }

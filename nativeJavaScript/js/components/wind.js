@@ -46,7 +46,7 @@ class wind extends HTMLElement {
 
     handleMessage(messageObject)
     {
-        console.log("ChatBox text message handled", messageObject)
+        console.log("wind message handled", messageObject)
         if (messageObject.name == 'Longitude') {
             this.longitude = messageObject.value;
         }

@@ -46,7 +46,7 @@ class rain extends HTMLElement {
 
     handleMessage(messageObject)
     {
-        console.log("ChatBox text message handled", messageObject)
+        console.log("rain message handled", messageObject)
         if (messageObject.name == 'Longitude') {
             this.longitude = messageObject.value;
         }
