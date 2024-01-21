@@ -7,6 +7,9 @@
         "declaration": true,
         "declarationMap": true,
         "experimentalDecorators": true,
-        "useDefineForClassFields": false
+        "useDefineForClassFields": false,
+        "paths": {
+            "components/*": ["./js/components/*"]
+        }
     }
 }
