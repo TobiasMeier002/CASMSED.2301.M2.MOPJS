@@ -30,6 +30,10 @@ Bei grösseren Anwendungen besteht jedoch das Risiko, dass der Code unübersicht
 
 ### Fazit
 
+VueJS ist eine Progresive JavaScript Framework (https://vuejs.org) Die Lernkurve ist relativ flach (auch wenn man wenig JavaScript kann).
+.vue Files erlauben den Code Kompakter zu schreiben da man die Methoden, Style und HTML Template direkt in einen File schreiben kann. Das macht der Code übersichtlicher und leichter zu warten als in Native JavaScript.
+Mit der axios Library von VueJS kann man sehr einfach API Requests machen und mit "mitt" kann man Events zwischen Komponenten senden.
+
 ## lit
 
 ### Beschreibung
