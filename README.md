@@ -12,6 +12,9 @@ Die Native Javascript Seite benutzt das Publish Subscribe Pattern um die Kompone
 2. Start `http-server`
 3. Browse to index.html
 
+### Fazit
+
+
 ## vuejs
 
 ### Beschreibung
@@ -22,6 +25,8 @@ Die Native Javascript Seite benutzt das Publish Subscribe Pattern um die Kompone
 2. Install npm modules `npm i`
 2. Start Application `npm run serve`
 
+### Fazit
+
 ## lit
 
 ### Beschreibung
@@ -29,6 +34,10 @@ Die Native Javascript Seite benutzt das Publish Subscribe Pattern um die Kompone
 lit ist eine leichtgewichtige Bibliothek für einfaches Komponenten Design.
 Die lit Lösung verwendet das Mediator Pattern, die Komponente `<Weather-APP>` fungiert als Mediator und verarbeitet die Events der Eingabe Komponenten und sendet diese an die Anzeige Komponenten.
 
+### Installation
+
 1. Change working directory to /lit/
 2. Install npm modules `npm i`
 3. Start Application `npm start`
+
+### Fazit
