@@ -14,6 +14,9 @@ Die Native Javascript Seite benutzt das Publish Subscribe Pattern um die Kompone
 
 ### Fazit
 
+Ein einfaches Publish Subscriber Pattern lässt sich mit Javascript schnell implementieren und ermöglicht die Erstellung von unabhängigen und wiederverwendbaren Komponenten.
+Da keine zusätzlichen Bibbliotheken oder Frameworks verwendet wurden, ist dieser Ansatz sehr performant und lässt sich ohne Abhängigkeiten zu Herstellern umsetzen.
+Bei grösseren Anwendungen besteht jedoch das Risiko, dass der Code unübersichtlich und Aufwendig in der Wartung wird.
 
 ## vuejs
 
@@ -31,8 +34,7 @@ Die Native Javascript Seite benutzt das Publish Subscribe Pattern um die Kompone
 
 ### Beschreibung
 
-lit ist eine leichtgewichtige Bibliothek für einfaches Komponenten Design.
-Die lit Lösung verwendet das Mediator Pattern, die Komponente `<Weather-APP>` fungiert als Mediator und verarbeitet die Events der Eingabe Komponenten und sendet diese an die Anzeige Komponenten.
+Die Lit Lösung verwendet das Mediator Pattern, die Komponente `<Weather-APP>` fungiert als Mediator und verarbeitet die Events der Eingabe Komponenten und sendet diese an die Anzeige Komponenten.
 
 ### Installation
 
@@ -41,3 +43,11 @@ Die lit Lösung verwendet das Mediator Pattern, die Komponente `<Weather-APP>` f
 3. Start Application `npm start`
 
 ### Fazit
+
+Lit ist eine leichtgewichtige Bibliothek für einfaches Komponenten Design. (https://lit.dev)
+Lit bietet eine flache Lernkurve und ist auf Komponenten spezielisiert.
+In Lit wird für die Kommunikation zwischen verschiedenen Komponenten das Mediator Pattern angewendet. 
+Als Mediator fungiert eine Komponente, welche alle Elemente mit Datenkommunikation beinhaltet, definiert. Daten können in Custom Events an den Mediator gesendet werden. Der CustomEventHandler kann diese Daten in die öffentlichen Properties der Sub Komponenten schreiben. Mit dem `@query` Statement können auch mehrere Komponenten Selektier tund Adressiert werden.
+
+Im Vergleich zu Native Script kann mit lit und TypeScript einen deklarativen und übersichtlichen Code erstellt werden. Dieser ist leichter zu warten als die native Javascript Lösung.
+Allerdings ist die performance schlechter als mit native Javascript, da der TypeScript Code compiliert wird und eine externe Bibliothek verwendet wird. 
