@@ -14,8 +14,7 @@ Die Native Javascript Seite benutzt das Publish Subscribe Pattern um die Kompone
 ### Installation
 
 1. Change working directory to /nativeJavaScript/
-2. Start `http-server`
-3. Browse to index.html
+2. Browse to index.html mit einem Web Browser
 
 ### Fazit
 
@@ -69,8 +68,8 @@ Allerdings ist die performance schlechter als mit native Javascript, da der Type
 
 ### Uxia Rivero
 
-Ich habe in diesem Projekt mit JavaScript und Vue.js gearbeitet. Native Javascript braucht viel mehr Zeilen Code und explizites Logik als Vue.js. In dem Sinn ist Vue.js als Framework gut überlegt. So eine kleine GUI in Vue.js lässt sich in weniger Stunden kodieren und lernen. Es gibt auch eine grosse Community mit vielen nützlichen Tutorials wie z.B. https://www.youtube.com/playlist?list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1
+Ich habe in diesem Projekt mit JavaScript und Vue.js gearbeitet. Native JavaScript braucht viel mehr Zeilen Code und explizites Logik als Vue.js. In dem Sinn ist Vue.js als Framework gut überlegt. Man kann so eine kleine GUI in Vue.js in weniger Stunden kodieren und lernen (auch ohne vorherige Erfahrung). Es gibt eine grosse Community mit vielen nützlichen Tutorials wie z.B. https://www.youtube.com/playlist?list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1
 
-Ausserdem war es für mich das erste Mal, wo ich eine RestAPI benutzt habe und mich mit HTML auseinandergesetzt habe. Ich finde diese erste Erfahrung sehr wertvoll.
+Ausserdem war es für mich das erste Mal, wo ich eine RestAPI benutzt habe und mich mit HTML und CSS auseinandergesetzt habe. Ich finde diese erste Erfahrung sehr wertvoll.
 
-Bzgl. Message-Orientiertes Programmieren habe es interessant gefunden. Vor allem, dass das Programm nicht mehr ein einziges rotes Fade hat, sondern man generiert Events in einer Komponente und diese Events werden irgendwo anders konsumiert. Wann genau das passiert, spielt aber keine Rolle. Alle anderen Skripten, wo ich geschrieben habe, haben eine viel statische Struktur, wo eine "main" Funktion alle anderen Funktionen sequenziell ruft.
+Bzgl. Message-Orientiertes Programmieren habe es interessant gefunden. Vor allem, dass das Programm nicht mehr ein einziges rotes Fade hat, sondern man generiert Events in einer Komponente und diese Events werden irgendwo anders konsumiert. Wann genau das passiert, weiss man nicht. Alle anderen Skripten, wo ich corher geschrieben habe, haben eine viel statischer Struktur, wo eine "main" Funktion alle anderen Funktionen sequenziell ruft.
