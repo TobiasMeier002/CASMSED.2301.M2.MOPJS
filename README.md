@@ -64,6 +64,17 @@ Als Mediator fungiert eine Komponente, welche alle Elemente mit Datenkommunikati
 Im Vergleich zu Native Script kann mit lit und TypeScript einen deklarativen und übersichtlichen Code erstellt werden. Dieser ist leichter zu warten als die native Javascript Lösung.
 Allerdings ist die performance schlechter als mit native Javascript, da der TypeScript Code compiliert wird und eine externe Bibliothek verwendet wird. 
 
+Das in dieser Demo umgesetzte Mediator Pattern birgt allerdings das Risiko des "Props-Drilling". Führt die Verschachtelung über mehrere Ebenen und die unterste Komponente benötigt Daten, müssen alle übergeordneten Komponenten diese Daten weiterreichen. Muss der Code angpeasst werden, benötigen alle Beteiligten Komponenten Anpassungen, obwohl sie diese selber die Daten möglicherweise gar nicht benötigen. Ausserdem ist der Datenfluss nicht mehr klar erkennbar.
+Zusammengefasst führt dies zu folgenden Problemen:
+
+1. komplexerer Code
+2. verschlechterte Wartbarkeit
+3. grösserer Overhead
+4. Verschlechterte wiederverwendbarkeit
+5. Erhöhte Entwicklungszeit
+
+Bei Komponente für komplexere Anwendungen empfiehlt sich die Implementierung eines Context Pattern. Lit stellt diese Funktion im @lit/context Packet zur Verfügung.
+
 ## Persönliches Fazit
 
 ### Uxia Rivero
@@ -72,4 +83,10 @@ Ich habe in diesem Projekt mit JavaScript und Vue.js gearbeitet. Native JavaScri
 
 Ausserdem war es für mich das erste Mal, wo ich eine RestAPI benutzt habe und mich mit HTML und CSS auseinandergesetzt habe. Ich finde diese erste Erfahrung sehr wertvoll.
 
-Bzgl. Message-Orientiertes Programmieren habe es interessant gefunden. Vor allem, dass das Programm nicht mehr ein einziges rotes Fade hat, sondern man generiert Events in einer Komponente und diese Events werden irgendwo anders konsumiert. Wann genau das passiert, weiss man nicht. Alle anderen Skripten, wo ich corher geschrieben habe, haben eine viel statischer Struktur, wo eine "main" Funktion alle anderen Funktionen sequenziell ruft.
+Bzgl. Message-Orientiertes Programmieren habe es interessant gefunden. Vor allem, dass das Programm nicht mehr ein einziges rotes Fade hat, sondern man generiert Events in einer Komponente und diese Events werden irgendwo anders konsumiert. Wann genau das passiert, weiss man nicht. Alle anderen Skripten, wo ich vorher geschrieben habe, haben eine viel statischer Struktur, wo eine "main" Funktion alle anderen Funktionen sequenziell ruft.
+
+### Tobias Meier
+
+Meine bisherigen Erfahrung in der Frontendentwicklung sind sehr rudimentär. Mir war zwar bekannt, dass es das Konzept von CustomComponents in grossen Frameworks, wie zum Beispiel Angular, existiert. Mangels Knowhow lohnte sich für die simple Anforderung des Frontend eine Einführung eines grossen Frameworks nicht. Aus diesem Grund wurde das Frontend mit standard HTML Elemente umgesetzt. Daten eines Elements wurden entweder in Cookies oder local Store gespeichert oder von anderen Elementen direkt ausgelesen. Dies hatte zur Folge, dass keine Wiederverwendbarkeit und dadurch einen sehr hohen Wartungsaufwand enstand, da alle Elemente miteinander hart verdrahtet wurde. Es entstanden mehrere grosse Monolithen.
+
+In diesem Modul des Studiums, lernte ich, dass ein Einsatz von CustomElements auch mit native Javascript möglich ist, und war positiv überrascht, da eine Implementierung eines CustomElements lediglich ein paar Zeilen Code erfordert. Auch die beiden in der Demo verwendeten Patterns waren mir neu. Überzeugt hat mich das Publish-Subscribe Pattern, da ein Channel von betroffenen Komponenten abonniert werden kann, Sender können Ihr Nachrichten darin übermitteln. Für mein Frontend, plane ich in Zukunft das Publish-Subscribe Pattern mit verschiedenen, dem Kontext angepassten Channels einzusetzen. Damit wird erreicht, dass die Subscriber auch nur die für Sie relevanten Nachrichten erhalten. So errreiche ich mit wenig Aufwand eine sehr hohe Unabhängigkeit der Komponenten. Dies wiederum erhöht die Wiederverwendbarkeit und reduziert den Wartungsaufwand massiv.
